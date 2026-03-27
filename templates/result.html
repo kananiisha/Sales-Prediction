@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Prediction Result - BigMart Sales Prediction{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card border-success mb-3">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">✅ Prediction Result</h4>
+            </div>
+            <div class="card-body">
+                <!-- Predicted Value -->
+                <div class="text-center mb-4">
+                    <h1 style="color: #667eea; font-weight: bold;">
+                        {{ prediction.predicted_units_sold|round(2) }}
+                    </h1>
+                    <p class="text-muted">Predicted Units to be Sold</p>
+                </div>
+
+                <!-- Input Details -->
+                <hr>
+                <h5 class="fw-bold mb-3">Prediction Details</h5>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Item Category:</strong> {{ prediction.item_category }}</p>
+                        <p><strong>Item MRP:</strong> ₹{{ prediction.item_mrp }}</p>
+                        <p><strong>Item Visibility:</strong> {{ prediction.item_visibility }}</p>
+                        <p><strong>Fat Content:</strong> {{ prediction.item_fat_content }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Outlet Type:</strong> {{ prediction.outlet_type }}</p>
+                        <p><strong>Outlet Size:</strong> {{ prediction.outlet_size or 'N/A' }}</p>
+                        <p><strong>Location Type:</strong> {{ prediction.outlet_location_type }}</p>
+                        <p><strong>Est. Year:</strong> {{ prediction.outlet_establishment_year }}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Festival Flag:</strong> {{ prediction.festival_flag }}</p>
+                        <p><strong>Discount %:</strong> {{ prediction.discount_percentage }}%</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Predicted On:</strong> {{ prediction.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <hr>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="/predict" class="btn btn-primary">Make Another Prediction</a>
+                    <a href="/history" class="btn btn-secondary">View History</a>
+                    <a href="/dashboard" class="btn btn-outline-primary">Back to Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

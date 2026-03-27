@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - BigMart Sales Prediction{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">📊 Dashboard</h1>
+
+<!-- Statistics Cards -->
+<div class="row">
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Total Predictions</h5>
+                <p class="card-text" style="font-size: 36px; color: #667eea; font-weight: bold;">
+                    {{ total_predictions }}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Average Predicted Sales</h5>
+                <p class="card-text" style="font-size: 36px; color: #764ba2; font-weight: bold;">
+                    {{ avg_sales }}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Quick Action</h5>
+                <a href="/predict" class="btn btn-primary">Make Prediction</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Last 5 Predictions -->
+<h2 class="mt-5 mb-3">📈 Last 5 Predictions</h2>
+{% if last_5_predictions %}
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>MRP</th>
+                    <th>Discount %</th>
+                    <th>Predicted Units</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pred in last_5_predictions %}
+                <tr>
+                    <td>{{ pred.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+                    <td>{{ pred.item_category }}</td>
+                    <td>₹{{ pred.item_mrp }}</td>
+                    <td>{{ pred.discount_percentage }}%</td>
+                    <td><strong>{{ pred.predicted_units_sold|round(2) }}</strong></td>
+                    <td><a href="/result/{{ pred.id }}" class="btn btn-sm btn-info">View</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="/history" class="btn btn-secondary">View All History</a>
+{% else %}
+    <div class="alert alert-info">
+        No predictions yet. <a href="/predict">Make your first prediction!</a>
+    </div>
+{% endif %}
+{% endblock %}

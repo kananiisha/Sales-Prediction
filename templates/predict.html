@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}Make Prediction - BigMart Sales Prediction{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h2 class="mb-4">📋 Sales Prediction Form</h2>
+        
+        <form method="POST" class="needs-validation">
+            <!-- Item Details Section -->
+            <fieldset class="mb-4">
+                <legend class="fs-5 fw-bold mb-3">Item Details</legend>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="item_category" class="form-label">Item Category</label>
+                        <select class="form-select" id="item_category" name="item_category" required>
+                            <option value="">Select Category</option>
+                            <option value="Personal Care">Personal Care</option>
+                            <option value="Clothing">Clothing</option>
+                            <option value="Household">Household</option>
+                            <option value="Drinks">Drinks</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Food">Food</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="item_mrp" class="form-label">Item MRP (₹)</label>
+                        <input type="number" step="0.01" class="form-control" id="item_mrp" name="item_mrp" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="item_visibility" class="form-label">Item Visibility</label>
+                        <input type="number" step="0.0001" class="form-control" id="item_visibility" name="item_visibility" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="item_fat_content" class="form-label">Item Fat Content</label>
+                        <select class="form-select" id="item_fat_content" name="item_fat_content" required>
+                            <option value="">Select Fat Content</option>
+                            <option value="Low Fat">Low Fat</option>
+                            <option value="Regular">Regular</option>
+                            <option value="Non Edible">Non Edible</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Outlet Details Section -->
+            <fieldset class="mb-4">
+                <legend class="fs-5 fw-bold mb-3">Outlet Details</legend>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="outlet_type" class="form-label">Outlet Type</label>
+                        <select class="form-select" id="outlet_type" name="outlet_type" required>
+                            <option value="">Select Type</option>
+                            <option value="Supermarket Type1">Supermarket Type 1</option>
+                            <option value="Supermarket Type2">Supermarket Type 2</option>
+                            <option value="Supermarket Type3">Supermarket Type 3</option>
+                            <option value="Grocery Store">Grocery Store</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="outlet_size" class="form-label">Outlet Size</label>
+                        <select class="form-select" id="outlet_size" name="outlet_size" required>
+                            <option value="">Select Size</option>
+                            <option value="Small">Small</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Large">Large</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="outlet_location_type" class="form-label">Location Type</label>
+                        <select class="form-select" id="outlet_location_type" name="outlet_location_type" required>
+                            <option value="">Select Location</option>
+                            <option value="Tier 1">Tier 1</option>
+                            <option value="Tier 2">Tier 2</option>
+                            <option value="Tier 3">Tier 3</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="outlet_establishment_year" class="form-label">Outlet Establishment Year</label>
+                        <input type="number" min="1990" max="2030" class="form-control" id="outlet_establishment_year" name="outlet_establishment_year" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Promotion Details Section -->
+            <fieldset class="mb-4">
+                <legend class="fs-5 fw-bold mb-3">Promotion Details</legend>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="festival_flag" class="form-label">Festival Flag</label>
+                        <select class="form-select" id="festival_flag" name="festival_flag" required>
+                            <option value="">Select Option</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="discount_percentage" class="form-label">Discount Percentage (%)</label>
+                        <input type="number" step="0.01" min="0" max="100" class="form-control" id="discount_percentage" name="discount_percentage" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn btn-primary btn-lg w-100">🔮 Make Prediction</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
