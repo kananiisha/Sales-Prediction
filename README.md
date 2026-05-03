@@ -2,9 +2,6 @@
 
 A Flask-based web application that predicts retail sales using a trained Random Forest machine learning model with user authentication, prediction history, and analytics dashboard.
 
-## 🌐 Live Demo
-👉 **[Click here to try the app](https://your-render-link-here)** *(Deploy your app on Render, Heroku, or Railway and add the link here)*
-
 ## 🎯 Features
 
 ### ✅ Authentication System
