@@ -7,9 +7,9 @@ import os
 import joblib
 from datetime import datetime
 
-# Initialize Fl ask app
+# Initialize Flask app
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secret_key_change_this'  # Change in production
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-key')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///bigmart_sales.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -200,6 +200,9 @@ def predict():
                 'festival_flag': request.form.get('festival_flag'),
                 'discount_percentage': float(request.form.get('discount_percentage'))
             }
+
+            if form_data['item_category'] not in ['Food', 'Drinks']:
+                form_data['item_fat_content'] = 'Non Edible'
             
             # Load model
             model = load_model()

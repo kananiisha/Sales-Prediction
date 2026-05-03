@@ -2,6 +2,9 @@
 
 A Flask-based web application that predicts retail sales using a trained Random Forest machine learning model with user authentication, prediction history, and analytics dashboard.
 
+## 🌐 Live Demo
+👉 **[Click here to try the app](https://your-render-link-here)** *(Deploy your app on Render, Heroku, or Railway and add the link here)*
+
 ## 🎯 Features
 
 ### ✅ Authentication System
@@ -30,6 +33,21 @@ A Flask-based web application that predicts retail sales using a trained Random 
 - **User Management**: Store user accounts with password hashing
 - **Prediction History**: Track all user predictions with timestamps
 - **SQLAlchemy ORM**: Clean, object-oriented database interface
+
+## 📸 Screenshots
+
+![Dashboard](screenshots/dashboard.png)
+![Prediction Form](screenshots/predict.png)
+![Results](screenshots/result.png)
+
+## 📊 Model Performance
+
+| Metric | Score |
+|---|---|
+| Algorithm | Random Forest Regressor |
+| R² Score | 0.8412 |
+| RMSE | 15.95 |
+| Features Used | 10 |
 
 ## 📁 Project Structure
 
@@ -209,9 +227,16 @@ db.session.commit()
 
 **In app.py**, update these for production:
 ```python
-app.config['SECRET_KEY'] = 'change-this-to-random-string'  # IMPORTANT
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-key')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///bigmart_sales.db'
 ```
+
+## 🏗️ Architecture
+
+- **Frontend**: Bootstrap 5 + Jinja2 Templates
+- **Backend**: Flask REST API
+- **Database**: SQLite via SQLAlchemy ORM
+- **ML Model**: Random Forest (scikit-learn)
 
 ## 📦 Dependencies
 
@@ -223,24 +248,12 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///bigmart_sales.db'
 - **werkzeug**: Security utilities
 - **numpy**: Numerical computing
 
-## 🎓 Student-Friendly Notes
-
-This code is designed to be:
-- ✅ Easy to understand and modify
-- ✅ Viva-ready with clear comments
-- ✅ Not over-engineered
-- ✅ Following Flask best practices
-- ✅ Modular and maintainable
-
-All major concepts are documented inline for easy comprehension.
-
 ## 🤝 Contributing
 
-This is a learning project. Feel free to:
-- Add more features
-- Improve UI/UX
-- Optimize database queries
-- Add more prediction features
+- Fork the repo
+- Create a feature branch (`git checkout -b feature/new-feature`)
+- Commit changes (`git commit -m 'Add new feature'`)
+- Push and open a Pull Request
 
 ## 📞 Support
 
@@ -253,7 +266,7 @@ For issues with the application:
 
 ## 📄 License
 
-Educational project for learning Flask and ML integration.
+MIT License — feel free to use and modify.
 
 ---
 
